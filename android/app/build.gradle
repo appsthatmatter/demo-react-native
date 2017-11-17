@@ -20,6 +20,14 @@ android {
         testBuildType System.getProperty('testBuildType', 'debug')
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+		storeFile file("/Users/jonas/tmp/2/demo-react-native/my-release-key.keystore")
+		storePassword "jonasjonas"
+		keyAlias "jonas"
+		keyPassword "jonasjonas"
+        }
+    }
     splits {
         abi {
             reset()
@@ -32,6 +40,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
+
         }
     }
     // applicationVariants are e.g. debug, release
